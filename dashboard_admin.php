@@ -314,8 +314,8 @@ include 'header.php';
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 
 <!-- Main Content -->
-<main class="flex-1 p-6 sm:p-10 relative">
-    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Admin Dashboard</h1>
+<main class="flex-1 p-6 sm:p-10 relative bg-gradient-to-br from-indigo-50/30 to-teal-50/30 min-h-screen">
+    <h1 class="text-3xl font-bold text-slate-800 mb-8 tracking-tight">Admin Dashboard</h1>
 
     <!-- Flash / Error Messages -->
     <?php if ($flash_message): ?>
@@ -330,29 +330,29 @@ include 'header.php';
     <?php endif; ?>
 
     <!-- Stat Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <div class="bg-white p-5 rounded-lg shadow-md border-b-4 border-sky-500">
-            <div class="text-sm font-medium text-gray-500">Total Teachers</div>
-            <div class="mt-1 text-3xl font-semibold text-gray-900"><?php echo htmlspecialchars($stats['teachers']); ?></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="glass p-6 rounded-2xl border-l-4 border-l-indigo-500 hover:-translate-y-1 transition-all duration-300">
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Teachers</div>
+            <div class="mt-2 text-4xl font-bold text-slate-800"><?php echo htmlspecialchars($stats['teachers']); ?></div>
         </div>
-        <div class="bg-white p-5 rounded-lg shadow-md border-b-4 border-sky-500">
-            <div class="text-sm font-medium text-gray-500">Total Classes</div>
-            <div class="mt-1 text-3xl font-semibold text-gray-900"><?php echo htmlspecialchars($stats['classes']); ?></div>
+        <div class="glass p-6 rounded-2xl border-l-4 border-l-emerald-500 hover:-translate-y-1 transition-all duration-300">
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Classes</div>
+            <div class="mt-2 text-4xl font-bold text-slate-800"><?php echo htmlspecialchars($stats['classes']); ?></div>
         </div>
-        <div class="bg-white p-5 rounded-lg shadow-md border-b-4 border-sky-500">
-            <div class="text-sm font-medium text-gray-500">Total Subjects</div>
-            <div class="mt-1 text-3xl font-semibold text-gray-900"><?php echo htmlspecialchars($stats['subjects']); ?></div>
+        <div class="glass p-6 rounded-2xl border-l-4 border-l-sky-500 hover:-translate-y-1 transition-all duration-300">
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Subjects</div>
+            <div class="mt-2 text-4xl font-bold text-slate-800"><?php echo htmlspecialchars($stats['subjects']); ?></div>
         </div>
-        <div class="bg-white p-5 rounded-lg shadow-md border-b-4 border-yellow-500">
-            <div class="text-sm font-medium text-gray-500">Pending Papers</div>
-            <div class="mt-1 text-3xl font-semibold text-yellow-600"><?php echo htmlspecialchars($stats['pending_papers']); ?></div>
+        <div class="glass p-6 rounded-2xl border-l-4 border-l-amber-500 hover:-translate-y-1 transition-all duration-300">
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending Papers</div>
+            <div class="mt-2 text-4xl font-bold text-amber-600"><?php echo htmlspecialchars($stats['pending_papers']); ?></div>
         </div>
     </div>
     
     <!-- === NEW: CORRECTION MODULE === -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4">Upload Paper for Correction</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="lg:col-span-1 glass p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-xl font-bold text-slate-800 mb-6">Upload Paper for Correction</h2>
             <form action="upload_correction_paper_action.php" method="POST" enctype="multipart/form-data" class="space-y-4">
                 <div>
                     <label for="class_id" class="block text-sm font-medium text-gray-700">1. Select Class</label>
@@ -394,8 +394,8 @@ include 'header.php';
             </form>
         </div>
 
-        <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4">Correction Paper Status (All)</h2>
+        <div class="lg:col-span-2 glass p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-xl font-bold text-slate-800 mb-6">Correction Paper Status (All)</h2>
             <div class="overflow-x-auto max-h-96">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50 sticky top-0">
@@ -462,8 +462,8 @@ include 'header.php';
 
 
     <!-- Filter Form -->
-    <div id="filter-form" class="bg-white p-6 rounded-lg shadow-lg mb-6">
-        <h2 class="text-xl font-semibold mb-4">Filter Teacher Exam Submissions</h2>
+    <div id="filter-form" class="glass p-6 sm:p-8 rounded-2xl mb-8">
+        <h2 class="text-xl font-bold text-slate-800 mb-6">Filter Teacher Exam Submissions</h2>
         <form action="dashboard_admin.php" method="GET" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <!-- (Filter form is unchanged) -->
             <div>
@@ -530,8 +530,8 @@ include 'header.php';
     
     <!-- CHART MODULES -->
     <!-- (Chart modules are unchanged) -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800" id="assignmentsChartTitle">Assignments Overview by Class</h2>
+    <div class="glass p-6 sm:p-8 rounded-2xl mb-8">
+        <h2 class="text-xl font-bold mb-2 text-slate-800" id="assignmentsChartTitle">Assignments Overview by Class</h2>
         <p class="text-sm text-gray-500 mb-4">Click on a bar to see details for <strong id="currentExamName">All Exams</strong>.</p>
         <div class="relative h-96">
             <?php if (!empty($assignments_chart_data['labels'])): ?>
@@ -541,9 +541,9 @@ include 'header.php';
             <?php endif; ?>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4 text-gray-800">Paper Status by Class</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="glass p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-xl font-bold mb-6 text-slate-800">Paper Status by Class</h2>
             <div class="relative h-80">
                 <?php if (!empty($class_chart_data['labels'])): ?>
                     <canvas id="classStatusChart"></canvas>
@@ -552,8 +552,8 @@ include 'header.php';
                 <?php endif; ?>
             </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4 text-gray-800">Detailed Status (Class - Subject)</h2>
+        <div class="glass p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-xl font-bold mb-6 text-slate-800">Detailed Status (Class - Subject)</h2>
             <div class="relative h-80">
                 <?php if (!empty($detailed_chart_data['labels'])): ?>
                     <canvas id="detailedStatusChart"></canvas>
@@ -566,8 +566,8 @@ include 'header.php';
 
     <!-- Paper Submissions Table -->
     <!-- (This table is unchanged) -->
-    <div id="papers-table" class="bg-white p-6 rounded-lg shadow-lg">
-        <h2 class="text-xl font-semibold mb-4">All Paper Submissions</h2>
+    <div id="papers-table" class="glass p-6 sm:p-8 rounded-2xl mb-8">
+        <h2 class="text-xl font-bold text-slate-800 mb-6">All Paper Submissions</h2>
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">

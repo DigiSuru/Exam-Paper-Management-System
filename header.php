@@ -63,21 +63,22 @@ if (isset($_SESSION['user_id']) && isset($pdo)) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en" class="h-full bg-gray-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Paper Management System</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/output.css" rel="stylesheet">
     <!-- Load Alpine.js for interactivity -->
     <script src="//unpkg.com/alpinejs" defer></script>
     <style>
         /* Custom styles if needed */
         [x-cloak] { display: none !important; }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="h-full">
+<body class="h-full bg-gray-50 selection:bg-indigo-100 selection:text-indigo-900">
 <div class="min-h-full">
     <!-- 
       Alpine.js component to manage mobile menu state (open/close)
@@ -97,7 +98,7 @@ if (isset($_SESSION['user_id']) && isset($pdo)) {
             <div @click="open = false" class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
 
             <!-- Mobile menu content -->
-            <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700">
+            <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-slate-900">
                 <!-- Close button -->
                 <div class="absolute top-0 right-0 -mr-12 pt-2">
                     <button @click="open = false" type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -115,11 +116,11 @@ if (isset($_SESSION['user_id']) && isset($pdo)) {
                     <span class="text-white text-lg font-semibold ml-2">Exam System</span>
                 </div>
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
-                    <nav class="px-2 space-y-1">
+                    <nav class="space-y-1 mt-2">
                         <?php foreach ($links as $href => $label): ?>
                             <?php $isActive = ($current_page == $href); ?>
                             <a href="<?php echo $href; ?>" 
-                               class="<?php echo $isActive ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600'; ?> group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                               class="<?php echo $isActive ? 'bg-indigo-500/20 text-indigo-400 border-l-4 border-indigo-500 pl-3' : 'text-slate-300 hover:bg-slate-800 hover:text-white pl-4'; ?> transition-all duration-200 group flex items-center pr-2 py-3 text-base font-medium">
                                 <?php echo $label; ?>
                             </a>
                         <?php endforeach; ?>
@@ -132,8 +133,8 @@ if (isset($_SESSION['user_id']) && isset($pdo)) {
         </div>
 
         <!-- Static sidebar for desktop -->
-        <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-            <div class="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
+        <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 shadow-2xl z-20">
+            <div class="flex flex-col flex-grow pt-5 bg-slate-900 overflow-y-auto border-r border-slate-800">
                 <div class="flex items-center flex-shrink-0 px-4">
                      <svg class="h-8 w-auto text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -141,11 +142,11 @@ if (isset($_SESSION['user_id']) && isset($pdo)) {
                     <span class="text-white text-lg font-semibold ml-2">Exam Paper System</span>
                 </div>
                 <div class="mt-5 flex-1 flex flex-col">
-                    <nav class="flex-1 px-2 pb-4 space-y-1">
+                    <nav class="flex-1 mt-4 space-y-1">
                         <?php foreach ($links as $href => $label): ?>
                             <?php $isActive = ($current_page == $href); ?>
                             <a href="<?php echo $href; ?>" 
-                               class="<?php echo $isActive ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600'; ?> group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                               class="<?php echo $isActive ? 'bg-indigo-500/20 text-indigo-400 border-r-4 border-indigo-500' : 'text-slate-300 hover:bg-slate-800 hover:text-white'; ?> transition-all duration-200 group flex items-center px-4 py-3 text-sm font-medium">
                                 <?php echo $label; ?>
                             </a>
                         <?php endforeach; ?>
@@ -156,7 +157,7 @@ if (isset($_SESSION['user_id']) && isset($pdo)) {
         
         <!-- Main content area -->
         <div class="md:pl-64 flex flex-col flex-1">
-            <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
+            <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200">
                 
                 <!-- Mobile menu button (Hamburger) -->
                 <button @click.stop="open = !open" type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">

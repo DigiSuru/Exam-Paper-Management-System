@@ -97,8 +97,8 @@ include 'header.php';
 ?>
 
 <!-- Main Content -->
-<main class="flex-1 p-6 sm:p-10">
-    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Teacher Dashboard</h1>
+<main class="flex-1 p-6 sm:p-10 relative bg-gradient-to-br from-indigo-50/30 to-teal-50/30 min-h-screen">
+    <h1 class="text-3xl font-bold text-slate-800 mb-8 tracking-tight">Teacher Dashboard</h1>
 
     <!-- Flash Message Display -->
     <?php if ($flash_message): ?>
@@ -115,8 +115,8 @@ include 'header.php';
     <?php endif; ?>
 
     <!-- === NEW: PAPERS FOR CORRECTION MODULE === -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-        <h2 class="text-xl font-semibold mb-4">Papers for Correction</h2>
+    <div class="glass p-6 sm:p-8 rounded-2xl mb-8">
+        <h2 class="text-xl font-bold text-slate-800 mb-6">Papers for Correction</h2>
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
@@ -152,10 +152,10 @@ include 'header.php';
     <!-- === END NEW MODULE === -->
 
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <!-- Column 1: Submit New Paper -->
-        <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4">Submit New Exam Paper</h2>
+        <div class="lg:col-span-1 glass p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-xl font-bold text-slate-800 mb-6">Submit New Exam Paper</h2>
             
             <form action="upload_paper_action.php" method="POST" enctype="multipart/form-data" class="space-y-4">
                 
@@ -213,8 +213,8 @@ include 'header.php';
         </div>
 
         <!-- Column 2: My Recent Submissions -->
-        <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4">My Recent Submissions</h2>
+        <div class="lg:col-span-2 glass p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-xl font-bold text-slate-800 mb-6">My Recent Submissions</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">

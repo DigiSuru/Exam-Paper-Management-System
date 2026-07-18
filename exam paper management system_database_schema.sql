@@ -92,7 +92,7 @@ CREATE TABLE `correction_papers` (
   `original_file_path` varchar(255) NOT NULL,
   `status` enum('pending_review','no_correction','corrected','completed') NOT NULL DEFAULT 'pending_review',
   `uploaded_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ CREATE TABLE `mcq_answer_keys` (
   `submitted_by` int(11) NOT NULL,
   `is_locked` tinyint(1) DEFAULT 1,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ CREATE TABLE `mcq_exams` (
   `file_path` varchar(255) NOT NULL,
   `total_questions` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -149,7 +149,7 @@ CREATE TABLE `mcq_exam_assignments` (
   `mcq_exam_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
   `assigned_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ CREATE TABLE `mcq_subject_ranges` (
   `subject_id` int(11) NOT NULL,
   `start_q` int(11) NOT NULL,
   `end_q` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -213,7 +213,7 @@ CREATE TABLE `paper_corrections` (
   `correction_notes` text DEFAULT NULL,
   `correction_image_path` varchar(255) DEFAULT NULL,
   `submitted_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -227,7 +227,7 @@ CREATE TABLE `student_responses` (
   `question_number` int(11) NOT NULL,
   `selected_option` enum('A','B','C','D') DEFAULT NULL,
   `is_correct` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -246,7 +246,7 @@ CREATE TABLE `student_results` (
   `wrong_count` int(11) NOT NULL DEFAULT 0,
   `unattempted_count` int(11) NOT NULL DEFAULT 0,
   `graded_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glass {
+    @apply bg-white bg-opacity-70 backdrop-blur-md border border-white border-opacity-50 shadow-xl;
+  }
+}
+
+@layer base {
+  /* Global Form Styling Improvements */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    @apply px-4 py-3 rounded-xl border-gray-200 bg-gray-50/50 shadow-inner focus:bg-white focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-300 !important;
+  }
+  
+  /* Make sure labels also look slightly better globally if they are directly preceding inputs, though Tailwind usually handles this via classes. */
+  label {
+    @apply font-semibold text-slate-700 tracking-wide;
+  }
+}

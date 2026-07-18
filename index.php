@@ -81,87 +81,105 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Exam Paper System</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/output.css" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
-    <style>
-        .font-sans { font-family: 'Inter', sans-serif; }
-    </style>
 </head>
-<body class="font-sans h-full">
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        <div>
-            <!-- ADDED: School image -->
-            <img class="mx-auto h-24 w-auto" src="uploads/322554729_889228362504294_5639580102782801357_n.jpg" alt="School image" onerror="this.style.display='none'">
-            <!-- END ADDED -->
+<body class="font-sans h-screen flex overflow-hidden bg-white">
 
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Exam Paper Management System
-                
-            </h2>
-            <p class="mt-2 text-center text-sm text-gray-600">
-                Sign in to your account
-            </p>
+<!-- Left: Branding / Visual Panel (Hidden on small screens) -->
+<div class="relative hidden lg:flex lg:w-1/2 bg-gradient-to-br from-indigo-600 via-purple-700 to-sky-500 items-center justify-center overflow-hidden">
+    <!-- Decorative SVG background elements -->
+    <div class="absolute inset-0 opacity-20">
+        <svg class="absolute left-0 top-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon fill="white" points="0,100 100,0 100,100"/>
+        </svg>
+    </div>
+    <div class="relative z-10 text-center px-12 text-white">
+        <h1 class="text-5xl font-extrabold tracking-tight mb-6 drop-shadow-lg">Exam Paper<br>Management</h1>
+        <p class="text-lg text-indigo-100 font-medium">A unified platform for teachers and administrators to streamline exam operations.</p>
+    </div>
+</div>
+
+<!-- Right: Login Form Panel -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 overflow-y-auto">
+    <div class="max-w-md w-full space-y-8 animate-fade-in-up">
+        <div class="text-center">
+            <!-- ADDED: School image -->
+            <img class="mx-auto h-20 w-auto mb-6 rounded-full shadow-md" src="uploads/322554729_889228362504294_5639580102782801357_n.jpg" alt="School image" onerror="this.style.display='none'">
+            <!-- END ADDED -->
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Welcome Back</h2>
+            <p class="mt-2 text-sm text-slate-500 font-medium">Sign in to your account</p>
         </div>
 
         <!-- Flash Message Display -->
         <?php if ($flash_message): ?>
-            <div class="rounded-md <?php echo $flash_message['type'] === 'success' ? 'bg-green-100 border-green-400 text-green-700' : 'bg-red-100 border-red-400 text-red-700'; ?> border p-4">
-                <p><?php echo htmlspecialchars($flash_message['message']); ?></p>
+            <div class="rounded-xl <?php echo $flash_message['type'] === 'success' ? 'bg-green-50 border-green-200 text-green-700' : 'bg-red-50 border-red-200 text-red-700'; ?> border p-4 shadow-sm">
+                <p class="text-sm font-medium"><?php echo htmlspecialchars($flash_message['message']); ?></p>
             </div>
         <?php endif; ?>
 
         <!-- Error Message Display -->
         <?php if ($error_message): ?>
-            <div class="rounded-md bg-red-100 border-red-400 text-red-700 border p-4">
-                <p><?php echo htmlspecialchars($error_message); ?></p>
+            <div class="rounded-xl bg-red-50 border border-red-200 text-red-700 p-4 shadow-sm">
+                <p class="text-sm font-medium"><?php echo htmlspecialchars($error_message); ?></p>
             </div>
         <?php endif; ?>
 
-
         <form class="mt-8 space-y-6" action="index.php" method="POST">
             <input type="hidden" name="remember" value="true">
-            <div class="rounded-md shadow-sm -space-y-px">
+            <div class="space-y-4">
                 <div>
-                    <label for="email-address" class="sr-only">Email address</label>
+                    <label for="email-address" class="block text-sm font-semibold text-slate-700 mb-1">Email address</label>
                     <input id="email-address" name="email" type="email" autocomplete="email" required
-                           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
-                           placeholder="Email address">
+                           class="w-full"
+                           placeholder="Enter your email">
                 </div>
                 <div>
-                    <label for="password" class="sr-only">Password</label>
+                    <label for="password" class="block text-sm font-semibold text-slate-700 mb-1">Password</label>
                     <input id="password" name="password" type="password" autocomplete="current-password" required
-                           class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
-                           placeholder="Password">
+                           class="w-full"
+                           placeholder="Enter your password">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                    <label for="remember-me" class="ml-2 block text-sm text-slate-600">Remember me</label>
+                </div>
+                <div class="text-sm">
+                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot password?</a>
                 </div>
             </div>
 
             <div>
                 <button type="submit"
-                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                        class="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-lg shadow-indigo-600/30">
                     Sign in
                 </button>
             </div>
         </form>
 
-        <div class="text-sm text-center">
-            <a href="register.php" class="font-medium text-sky-600 hover:text-sky-500">
-                Don't have an account? Register here
-            </a>
+        <div class="text-sm text-center pt-4">
+            <p class="text-slate-500">
+                Don't have an account? 
+                <a href="register.php" class="font-bold text-indigo-600 hover:text-indigo-500 hover:underline transition-all">Register here</a>
+            </p>
         </div>
 
         <!-- NEW FOOTER SECTION -->
-        <footer class="pt-6 border-t border-gray-200">
-            <p class="text-center text-sm text-gray-500">
+        <footer class="pt-8 mt-8 border-t border-gray-100">
+            <p class="text-center text-xs text-slate-400 font-medium tracking-wide">
                 Made with &hearts; by
-                <a href="https://instagram.com/digital_suru" target="_blank" rel="noopener noreferrer" class="font-medium text-sky-600 hover:text-sky-500">
-                    Suru
+                <a href="https://skmeghwal.in" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-400">
+                    SK Meghwal
                 </a>
             </p>
         </footer>
         <!-- END FOOTER SECTION -->
-
     </div>
 </div>
+
 </body>
 </html>

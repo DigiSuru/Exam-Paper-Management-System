@@ -128,8 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <footer class="pt-6 border-t border-gray-200">
             <p class="text-center text-sm text-gray-500">
                 Made with &hearts; by
-                <a href="https://instagram.com/digital_suru" target="_blank" rel="noopener noreferrer" class="font-medium text-sky-600 hover:text-sky-500">
-                    Suru
+                <a href="https://skmeghwal.in" target="_blank" rel="noopener noreferrer" class="font-medium text-sky-600 hover:text-sky-500">
+                    SK Meghwal
                 </a>
             </p>
         </footer>

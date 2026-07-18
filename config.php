@@ -3,10 +3,10 @@
 session_start();
 
 // --- DATABASE CONFIGURATION ---
-define('DB_HOST', 'localhost'); // Or 'localhost'
-define('DB_NAME', 'u605211817_papermanagemen');
-define('DB_USER', 'u605211817_shakshi');
-define('DB_PASS', '0$OqBlTGa'); // Your MySQL password
+define('DB_HOST', '127.0.0.1'); // Bypass IPv6 lookup delay on Windows
+define('DB_NAME', 'epms_db');
+define('DB_USER', 'root');
+define('DB_PASS', 'root'); // Your MySQL password
 
 // --- 2. PDO Database Connection ---
 try {
