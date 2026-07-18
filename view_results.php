@@ -70,9 +70,19 @@ if ($selected_exam && $selected_class) {
                 <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Report Cards</h1>
                 <p class="mt-1 text-sm text-gray-500">View aggregate student results for a specific exam and class.</p>
             </div>
-            <div class="mt-4 sm:mt-0 space-x-2">
-                <button onclick="window.print()" class="bg-white text-gray-700 rounded-md px-4 py-2 text-sm font-semibold border border-gray-300 shadow-sm hover:bg-gray-50">
-                    Print / Export PDF
+            <div class="mt-4 sm:mt-0 space-x-2 flex">
+                <?php if ($selected_exam && $selected_class): ?>
+                    <a href="export_results_excel.php?exam_id=<?php echo urlencode($selected_exam); ?>&class_id=<?php echo urlencode($selected_class); ?>" class="bg-green-600 text-white rounded-md px-4 py-2 text-sm font-semibold shadow-sm hover:bg-green-500 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Export Excel
+                    </a>
+                    <a href="export_results_pdf.php?exam_id=<?php echo urlencode($selected_exam); ?>&class_id=<?php echo urlencode($selected_class); ?>" class="bg-red-600 text-white rounded-md px-4 py-2 text-sm font-semibold shadow-sm hover:bg-red-500 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Export PDF
+                    </a>
+                <?php endif; ?>
+                <button onclick="window.print()" class="bg-white text-gray-700 rounded-md px-4 py-2 text-sm font-semibold border border-gray-300 shadow-sm hover:bg-gray-50 flex items-center">
+                    Print
                 </button>
             </div>
         </div>
