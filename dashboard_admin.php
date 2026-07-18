@@ -349,6 +349,29 @@ include 'header.php';
         </div>
     </div>
     
+    <!-- System Settings: Teacher Login Restriction -->
+    <div class="mb-8 glass p-6 sm:p-8 rounded-2xl border-l-4 border-l-indigo-500">
+        <h2 class="text-xl font-bold text-slate-800 mb-6">System Settings: Teacher Login Access</h2>
+        <form action="settings_action.php" method="POST" class="space-y-4 max-w-md">
+            <div>
+                <label for="teacher_login_cutoff" class="block text-sm font-medium text-gray-700">Disable Teacher Login After (Date & Time)</label>
+                <?php
+                $stmt_setting = $pdo->query("SELECT setting_value FROM settings WHERE setting_key = 'teacher_login_cutoff'");
+                $current_cutoff = $stmt_setting->fetchColumn();
+                ?>
+                <input id="teacher_login_cutoff" name="teacher_login_cutoff" type="datetime-local" value="<?php echo htmlspecialchars($current_cutoff ?: ''); ?>"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <p class="mt-1 text-xs text-gray-500">Set a cutoff time to disable teacher logins. Leave blank to allow logins at all times.</p>
+            </div>
+            <div>
+                <button type="submit"
+                        class="flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Save Settings
+                </button>
+            </div>
+        </form>
+    </div>
+
     <!-- === NEW: CORRECTION MODULE === -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div class="lg:col-span-1 glass p-6 sm:p-8 rounded-2xl">

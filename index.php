@@ -25,31 +25,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user && password_verify($password, $user['password_hash'])) {
                 // Password is correct, now check role and time
                 
-                // --- NEW LOGIN RESTRICTION LOGIC FOR TEACHERS ---
-                if ($user['role'] === 'teacher') {
-                    // Set the timezone to India Standard Time (IST)
-                    $timezone = new DateTimeZone('Asia/Kolkata');
-                    
-                    // Get the current time in IST
-                    $currentTime = new DateTime('now', $timezone);
-                    
-                    // Define the cutoff time in IST (2025-01-30 22:00 )
-                    $cutoffTime = new DateTime('2026-01-02 20:00:00', $timezone);
+                    // --- NEW LOGIN RESTRICTION LOGIC FOR TEACHERS ---
+                    if ($user['role'] === 'teacher') {
+                        // Fetch the cutoff time from settings
+                        $stmt_setting = $pdo->query("SELECT setting_value FROM settings WHERE setting_key = 'teacher_login_cutoff'");
+                        $cutoff_value = $stmt_setting->fetchColumn();
 
-                    // Check if the current time is after the cutoff time
-                    if ($currentTime > $cutoffTime) {
-                        // Teacher login is restricted, set custom error message
-                        $error_message = 'Login disabled after 20:00 PM, January, 2026. Please contact the administrator.';
-                        // Do not create a session or redirect
-                    } else {
-                        // Teacher login is allowed. Start the session and redirect.
-                        $_SESSION['user_id'] = $user['user_id'];
-                        $_SESSION['name'] = $user['name'];
-                        $_SESSION['role'] = $user['role'];
-                        header('Location: dashboard_teacher.php');
-                        exit;
-                    }
-                } else if ($user['role'] === 'admin') {
+                        if (!empty($cutoff_value)) {
+                            // Set the timezone to India Standard Time (IST)
+                            $timezone = new DateTimeZone('Asia/Kolkata');
+                            
+                            // Get the current time in IST
+                            $currentTime = new DateTime('now', $timezone);
+                            
+                            // Parse the cutoff time
+                            $cutoffTime = new DateTime($cutoff_value, $timezone);
+
+                            // Check if the current time is after the cutoff time
+                            if ($currentTime > $cutoffTime) {
+                                // Teacher login is restricted, set custom error message
+                                $formatted_cutoff = $cutoffTime->format('H:i A, F j, Y');
+                                $error_message = "Login disabled after {$formatted_cutoff}. Please contact the administrator.";
+                                // Do not create a session or redirect
+                            } else {
+                                // Teacher login is allowed. Start the session and redirect.
+                                $_SESSION['user_id'] = $user['user_id'];
+                                $_SESSION['name'] = $user['name'];
+                                $_SESSION['role'] = $user['role'];
+                                header('Location: dashboard_teacher.php');
+                                exit;
+                            }
+                        } else {
+                            // No cutoff time set. Login allowed.
+                            $_SESSION['user_id'] = $user['user_id'];
+                            $_SESSION['name'] = $user['name'];
+                            $_SESSION['role'] = $user['role'];
+                            header('Location: dashboard_teacher.php');
+                            exit;
+                        }
+                    } else if ($user['role'] === 'admin') {
                     // User is an admin, login is always allowed
                     $_SESSION['user_id'] = $user['user_id'];
                     $_SESSION['name'] = $user['name'];
