@@ -11,11 +11,13 @@ $user_role = $_SESSION['role'] ?? null;
 // Define navigation links based on role
 $admin_links = [
     'dashboard_admin.php' => '📊 Dashboard',
+    'manage_students.php' => '👨‍🎓 Students',
+    'view_results.php' => '🏆 Report Cards',
     'manage_classes.php' => '🏫 Classes',
     'manage_subjects.php' => '📚 Subjects',
     'manage_teachers.php' => '👨‍🏫 Teachers',
     'manage_exams.php' => '📝 Exams',
-     'manage_papers.php' => '📄 Manage Papers',
+    'manage_papers.php' => '📄 Manage Papers',
     'manage_assignments.php' => '🔗 Assignments',
     'manage_queries.php' => '❓ Teacher Queries',
     'manage_mcq.php' => 'Manage MCQ Answer Key',
@@ -25,6 +27,7 @@ $admin_links = [
 
 $teacher_links = [
     'dashboard_teacher.php' => '📊 Dashboard',
+    'enter_marks.php' => '📝 Enter Marks',
     'teacher_mcq.php' => '📄 MCQ Dashboard',
     'my_queries.php' => '❓ My Queries',
 ];
