@@ -15,7 +15,7 @@ if (isset($_SESSION['flash_message'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Exam Paper System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/css/output.css" rel="stylesheet">
+    <link href="assets/css/output.css?v=<?php echo filemtime(__DIR__ . '/assets/css/output.css'); ?>" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
     <style>
         .font-sans { font-family: 'Inter', sans-serif; }

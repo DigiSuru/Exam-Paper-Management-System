@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Exam Paper System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/css/output.css" rel="stylesheet">
+    <link href="assets/css/output.css?v=<?php echo filemtime(__DIR__ . '/assets/css/output.css'); ?>" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body class="font-sans h-screen flex overflow-hidden bg-white">
